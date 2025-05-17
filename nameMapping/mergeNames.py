@@ -10,7 +10,7 @@ with open("database/osmDB.csv", 'r') as f:
     osmDB = list(dict_reader)
 
 counter = 0
-print("mr_id#osm_type#osm_id#mr_name#mr_alt_name#osm_name#osm_alt_name#country#chosen#proposal")
+print("mr_id#osm_type#osm_id#mr_name#mr_alt_name#osm_name#osm_alt_name#country#chosen#proposal#alt_chosen#alt_proposal")
 for miserendItem in miserendDB:
     miserendId = miserendItem['id']
     for osmItem in osmDB:
@@ -23,8 +23,8 @@ for miserendItem in miserendDB:
             if miserendItem['orszag'] == '12':
                 if osmItem['name'] != miserendItem['nev']:
                     counter+=1
-                    print(f"{miserendItem['id']}#{osmItem['@type']}#{osmItem['@id']}#{miserendItem['nev']}#miserend['ismertnev']#{osmItem['name']}#{osmItem['alt_name']}#{miserendItem['orszag']}")
+                    print(f"{miserendItem['id']}#{osmItem['@type']}#{osmItem['@id']}#{miserendItem['nev']}#{miserendItem['ismertnev']}#{osmItem['name']}#{osmItem['alt_name']}#{miserendItem['orszag']}####")
             else:
                 if osmItem['name:hu'] != miserendItem['nev']:
                     counter+=1
-                    print(f"{miserendItem['id']}#{osmItem['@type']}#{osmItem['@id']}#{miserendItem['nev']}#miserend['ismertnev']#{osmItem['name:hu']}#{osmItem['alt_name:hu']}#{miserendItem['orszag']}")
+                    print(f"{miserendItem['id']}#{osmItem['@type']}#{osmItem['@id']}#{miserendItem['nev']}#{miserendItem['ismertnev']}#{osmItem['name:hu']}#{osmItem['alt_name:hu']}#{miserendItem['orszag']}####")
