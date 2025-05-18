@@ -1,6 +1,6 @@
 mr_id#osm_type#osm_id#mr_name#mr_alt_name#osm_name#osm_alt_name#country#chosen#proposal#alt_chosen#alt_proposal
-1#way#218451125#Péter-Pál-templom#Péter-Pál templom (Csiprovacska)#Péter-Pál templom##12#MR###
-2#way#53040448#Szent Imre-templom#budai ciszterci templom#Budai Ciszterci Szent Imre Templom##12#?###
+1#way#218451125#Péter-Pál-templom#Péter-Pál templom (Csiprovacska)#Péter-Pál templom##12#MR##?#Csiprovacska
+2#way#53040448#Szent Imre-templom#budai ciszterci templom#Budai Ciszterci Szent Imre Templom##12#?##MR#
 7#way#370955103#Szent István király-templom#nagybácsai templom#Szent István király templom#Nagybácsai templom#12#OSM###
 14#way#252848731#Kövi Szűz Mária-templom#Kövi#Kövi Szűz Mária templom##12#MR###
 16#way#250716920#Jézus Szíve-templom Városmajor#Városmajor#Városmajori Jézus Szíve plébániatemplom##12#?###
@@ -1000,7 +1000,7 @@ mr_id#osm_type#osm_id#mr_name#mr_alt_name#osm_name#osm_alt_name#country#chosen#p
 2666#way#289731205#Urunk Mennybemenetele-templom##Urunk mennybemenetele templom##12####
 2681#way#373909083#Magyarok Nagyasszonya , Rózsafűzér királynője-templom#Andrástanyai templom#Magyarok Nagyasszonya, Rózsafüzér királynője-templom#Andrástanyai templom#12####
 2682#way#207011184#Szent Sebestyén-templom#csácsbozsoki templom#Szent Sebestyén templom#Csácsbozsoki templom#12####
-2687#node#269209046#Krisztus Feltámadása plébania templom#Am Tabor plébánia templom#Krisztus Feltámadása##1####
+2687#node#269209046#Krisztus Feltámadása plébania templom#Am Tabor plébánia templom#Krisztus Feltámadása##1#MR##MR#
 2691#way#294740559#Szent Anna-kápolna#huszonyahegyi templom#Szent Anna kápolna##12####
 2698#way#43650533#Szent György-templom##Szent György templom##12####
 2725#way#249858428#Szent István első vértanú-templom#Országúti Ferences Szent István első vértanú plébániatemplom#Szent István első vértanú templom#Országúti Ferences Szent István első vértanú plébániatemplom#12####
