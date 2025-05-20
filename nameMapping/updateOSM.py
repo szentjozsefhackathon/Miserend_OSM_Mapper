@@ -1,16 +1,18 @@
 import xml.etree.ElementTree as ET
 from csv import DictReader
+from xml.etree.ElementTree import Element
 
 
 def get_new_name_value(chosen, alt):
     match chosen:
         case "MR":
-            return item['mr_' + ("" if alt else "alt_") + 'name']
+            return item['mr_' + ("alt_" if alt else "") + 'name']
         case "OSM":
-            return item['osm_' + ("" if alt else "alt_") + 'name']
+            return item['osm_' + ("alt_" if alt else "") + 'name']
         case '?':
-            if item[("" if alt else "alt_") + 'proposal']:
-                return item['proposal']
+            proposal_text = ("alt_" if alt else "") + 'proposal'
+            if item[proposal_text]:
+                return item[proposal_text]
             else:
                 raise Exception("no proposal")
     raise Exception("invalid chosen field")
@@ -21,7 +23,24 @@ def get_tag_to_update(country, tag_base_name):
     else:
         return tag_base_name + ':hu'
 
-
+def update_tag(node, country_code, alt: bool):
+    key_base_name = 'name' if not alt else "alt_name"
+    chosen_text = 'chosen' if not alt else 'alt_chosen'
+    tag_to_update = get_tag_to_update(country_code, key_base_name)
+    try:
+        value_to_update = get_new_name_value(item[chosen_text], alt)
+    except (Exception) as e:
+        return None
+    name_node_to_update = node.find(f"tag[@k='{tag_to_update}']")
+    if name_node_to_update is not None:
+        name_node_to_update.set('v', value_to_update)
+    else:
+        new_element = ET.Element("tag")
+        new_element.set('k', tag_to_update)
+        new_element.set('v', value_to_update)
+        nwr.append(new_element)
+        #Element.SubElement(nwr, 'tag', dict(k=tag_to_update, v=value_to_update))
+    return None
 
 tree = ET.parse('database/url_miserend.osm')
 root = tree.getroot()
@@ -42,13 +61,7 @@ for item in nonmatchingDB:
 
     for nwr in root.iter(osm_type):
         if nwr.get('id') == item['osm_id']:
-            try:
-                for elem in nwr.iter('tag'):
-                    if elem.get('k') == get_tag_to_update(item['country'], 'name'):
-                        elem.set('v', get_new_name_value(item['chosen'], False))
-                    elif elem.get('k') == get_tag_to_update(item['country'], 'alt_name'):
-                        elem.set('v', get_new_name_value(item['alt_chosen'], True))
-            except Exception as e:
-                continue
+            update_tag(nwr, item['country'], False)
+            update_tag(nwr, item['country'], True)
 
 tree.write('database/output.osm', encoding='utf-8', xml_declaration=True)
